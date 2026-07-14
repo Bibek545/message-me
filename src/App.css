@@ -1,0 +1,29 @@
+
+/* home pafe */
+.hero-container {
+    width: 500px;
+}
+
+.hero-card {
+    height: auto;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(217, 215, 215, 0.8);
+}
+/* home page */
+
+/* register page */
+
+.register-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 24px rgba(217, 215, 215, 0.8);
+}
+/* register page */
+
+.register-card h2 {
+    font-weight: 700;
+}
