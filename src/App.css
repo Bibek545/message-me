@@ -64,7 +64,14 @@ body{
 
 /* Conversations */
 .conversationContainer{
+    display: flex;
+    flex-direction: column;
     border: 1px solid black;
+}
+
+.chatHeaderContainer{
+    background-color: red;
+    height: 100px;
 }
 /* Conversations */
 
