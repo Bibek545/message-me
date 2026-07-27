@@ -4,6 +4,7 @@ import HomePage from '../pages/home/HomePage'
 import AboutPage from '../pages/home/AboutPage'
 import SignInPage from '../pages/auth/SignInPage'
 import LoginPage from '../pages/auth/LoginPage'
+import ChatPage from '../pages/chat/ChatPage'
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,9 @@ const AppRoutes = () => {
           <Route path='/about' element={<AboutPage />}></Route>
           <Route path='/register' element={<SignInPage />}></Route>
           <Route path='/login' element={<LoginPage />}></Route>
+      </Route>
+      <Route path='/dashboard' element={<ChatPage />}>
+
       </Route>
     </Routes>
 )
