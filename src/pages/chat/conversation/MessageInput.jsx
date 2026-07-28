@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import { Button } from "react-bootstrap";
 
 const MessageInput = () => {
   return (
-    <div>Input your message here</div>
-  )
-}
+    <>
+      <div className="message-box">
+        <input 
+        type="text" 
+        className="messageInput-box"
+        placeholder="Enter your message here" />
+        <Button>Send</Button>
+      </div>
+    </>
+  );
+};
 
-export default MessageInput
+export default MessageInput;
