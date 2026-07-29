@@ -5,6 +5,8 @@ import AboutPage from '../pages/home/AboutPage'
 import SignInPage from '../pages/auth/SignInPage'
 import LoginPage from '../pages/auth/LoginPage'
 import ChatPage from '../pages/chat/ChatPage'
+import ArchivedPage from '../pages/chat/menuSideBar/ArchivedPage'
+import UserProfile from '../pages/chat/menuSideBar/UserProfile'
 
 const AppRoutes = () => {
   return (
@@ -17,8 +19,9 @@ const AppRoutes = () => {
           <Route path='/login' element={<LoginPage />}></Route>
       </Route>
       <Route path='/dashboard' element={<ChatPage />}>
-
       </Route>
+      <Route path='/archived' element={<ArchivedPage />}></Route>
+      <Route path='/profile' element={<UserProfile />}></Route>
     </Routes>
 )
 }
