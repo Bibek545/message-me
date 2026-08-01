@@ -37,7 +37,7 @@ const LoginPage = () => {
       localStorage.setItem("JWTtoken", tokenJWT);
     }
     setTimeout(() => {
-      navigate("/dashboard");
+      navigate("/user/dashboard");
     }, 1500);
   };
   return (

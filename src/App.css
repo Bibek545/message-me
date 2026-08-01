@@ -37,12 +37,32 @@ body {
 /* for the chat page */
 .chat-page {
     display: grid;
-    grid-template-columns: 100px 300px 1fr 200px;
+    grid-template-columns: 280px 1fr 250px;
     height: 100vh;
+    width: 100%;
     /* background-color: aliceblue */
 }
 
 /* for the chat page */
+
+/* for the user layout */
+.userLayout {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 120px;;
+    flex-shrink: 0;
+}
+
+.userContent {
+    flex: 1;
+    min-width: 0;
+}
+
+/* for the user layout */
 
 /* menu side bar */
 .menuside-container {

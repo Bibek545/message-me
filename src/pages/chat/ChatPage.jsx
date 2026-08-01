@@ -8,7 +8,7 @@ const ChatPage = () => {
   return (
     <>
     <div className='chat-page m-3 p-3'>
-        <MenuSideBar />
+        {/* <MenuSideBar /> */}
         <ContactSideBar />
         <Conversation />
         <ProfilePage />
