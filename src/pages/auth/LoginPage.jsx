@@ -33,7 +33,8 @@ const LoginPage = () => {
 
     const result = await loginUserApi(formData);
     if (result.status === "success") {
-      const tokenJWT = result.token;
+      const tokenJWT = result.data.token;
+      console.log(tokenJWT)
       localStorage.setItem("JWTtoken", tokenJWT);
     }
     setTimeout(() => {
