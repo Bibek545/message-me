@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUserApi } from "../../helper/authApi";
+// import { loginUserApi } from "../../helper/authApi";
+import { loginAction } from "../../feature/user/userAction";
+import { useDispatch } from "react-redux";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -31,10 +34,10 @@ const LoginPage = () => {
       }
     }
 
-    const result = await loginUserApi(formData);
+    const result = await dispatch(loginAction(formData));
     if (result.status === "success") {
       const tokenJWT = result.data.token;
-      console.log(tokenJWT)
+      // console.log(tokenJWT)
       localStorage.setItem("JWTtoken", tokenJWT);
     }
     setTimeout(() => {
