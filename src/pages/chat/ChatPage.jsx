@@ -11,7 +11,7 @@ const ChatPage = () => {
         {/* <MenuSideBar /> */}
         <ContactSideBar />
         <Conversation />
-        <ProfilePage />
+        {/* <ProfilePage /> */}
     </div>
     </>
   )
