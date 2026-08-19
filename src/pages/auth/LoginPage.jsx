@@ -38,7 +38,7 @@ const LoginPage = () => {
     if (result.status === "success") {
       const tokenJWT = result.data.token;
       // console.log(tokenJWT)
-      localStorage.setItem("JWTtoken", tokenJWT);
+      localStorage.setItem("jwtToken", tokenJWT);
     }
     setTimeout(() => {
       navigate("/user/dashboard");

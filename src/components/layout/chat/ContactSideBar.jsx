@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
+import { getMyConversationApi } from "../../../helper/conversationApi";
+import { useDispatch, useSelector } from "react-redux";
+import { getMyConversationAction } from "../../../feature/conversation/conversationAction";
 
 const ContactSideBar = () => {
+  const { conversations } = useSelector((state) => state.conversationsInfo);
+  const loggedUser = useSelector((state) => state.userInfo);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMyConversationAction());
+  }, []);
+
+  // console.log(conversations);
+  // console.log(loggedUser);
+
   return (
     <>
       <div className="contactContainer d-flex">
@@ -19,47 +33,32 @@ const ContactSideBar = () => {
         </div>
         <div className="d-flex justify-content-between contactItem p-1">
           <div className="d-flex justify-content-center ">
-            <div className="me-4">
-              <p>(avatar)</p>
-            </div>
-            <div className="">
-              <p>Bibek </p>
-              <p>See yaa</p>
-            </div>
-          </div>
-          <div>
-            <h6>7:33 pm</h6>
-            <p>5</p>
-          </div>
-        </div>
-        <div className="d-flex justify-content-between contactItem p-1">
-          <div className="d-flex justify-content-center ">
-            <div className="me-4">
-              <p>(avatar)</p>
-            </div>
-            <div className="">
-              <p>Bibek </p>
-              <p>See yaa</p>
-            </div>
-          </div>
-          <div>
-            <h6>7:33 pm</h6>
-            <p>5</p>
-          </div>
-        </div>{" "}
-        <div className="d-flex justify-content-between contactItem p-1">
-          <div className="d-flex justify-content-center ">
-            <div className="me-4">
-              <p>(avatar)</p>
-            </div>
-            <div className="">
-              <p>Bibek </p>
-              <p>See yaa</p>
-            </div>
-          </div>
-          <div>
-            <h6>7:33 pm</h6>
-            <p>5</p>
+            {conversations.map((conversation) => {
+              console.log(conversation.members);
+
+              const otherMember = conversation.members.find(
+                (member) => member._id !== loggedUser.user?.id,
+              );
+
+              return (
+
+                <div key={conversation._id}>
+                  <div className="fw-bold">
+                    {otherMember?.fName} {otherMember?.lName}
+                  </div>
+                    <div>{conversation.lastMessage.message}</div>
+                    <div className="text-right">
+                      {new Date(
+                        conversation.lastMessage.createdAt,
+                      ).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: true,
+                      })}
+                    </div>
+                  </div>
+              );
+            })}
           </div>
         </div>
       </div>

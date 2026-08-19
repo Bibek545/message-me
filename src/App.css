@@ -37,12 +37,35 @@ body {
 /* for the chat page */
 .chat-page {
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 500px 1fr;
 
     height: 100vh;
     width: 100%;
     /* background-color: aliceblue */
 }
+
+/* for the chat page after adding javascript */
+.conversation-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.last-message {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.message-time {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* for the chat page after adding javascript */
+
 
 /* for the chat page */
 
@@ -54,7 +77,8 @@ body {
 }
 
 .sidebar {
-    width: 120px;;
+    width: 120px;
+    ;
     flex-shrink: 0;
 }
 
@@ -75,7 +99,7 @@ body {
 
 /* ContactSideBar */
 .contactContainer {
-    background-color: rgb(0, 195, 255);
+    background-color: rgba(247, 253, 247, 0.935);
     border: 1px black;
 
     flex-direction: column;
@@ -99,7 +123,9 @@ body {
     display: flex;
     flex-direction: column;
     border: 1px black;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
+    background-color: rgba(247, 253, 247, 0.935);
+
 }
 
 .chatHeaderContainer {
@@ -119,17 +145,21 @@ body {
 .reciever-container {
     height: auto;
     width: 200px;
-    background-color: rgb(31, 203, 22);
+    background-color: rgb(242, 248, 242);
+    border: 1px solid black;
     align-self: flex-start;
 
 }
+
 .sender-container {
     height: auto;
     width: 200px;
-    background-color: rgb(31, 203, 22);
+    background-color: rgb(242, 248, 242);
+    border: 1px solid black;
     text-align: end;
     align-self: flex-end;
 }
+
 .reciever-avatar {
     height: 30px;
     width: 30px;
@@ -155,14 +185,15 @@ body {
 }
 
 .messageInput-box {
-height:auto;
-width: 90%;
+    height: auto;
+    width: 90%;
 }
+
 /* conversatstuoin */
 
 /* proifilePage */
 .profilePageContainer {
-    border: 1px  black;
+    border: 1px black;
     background-color: red;
 }
 
