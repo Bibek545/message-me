@@ -1,94 +1,42 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const MessageList = () => {
+  const { messages } = useSelector((state) => state.messageInfo);
+  const {user} = useSelector((state) => state.userInfo);
+  console.log(user);
+
   return (
     <>
-      <div className="message-container d-flex">
-        {/* reviver container */}
-        <div className="reciever-container d-flex justify-content-around">
-          <div className="reciever-avatar">
-            <img className="reciever-avatar" alt="avatar" />
-          </div>
-          <div>
-            <p>Hello, bibek</p>
-            <p>5:35pm</p>
-          </div>
-        </div>
-        {/* sender container */}
-        <div className="sender-container d-flex justify-content-around">
-          <div className="sender-avatar">
-            <img className="sender-avatar" alt="avatar" />
-          </div>
-          <div>
-            <p>Hello, babu</p>
-            <p>5:36pm</p>
-          </div>
-        </div>
-        {/* reviver container */}
-        <div className="reciever-container d-flex justify-content-around">
-          <div className="reciever-avatar">
-            <img className="reciever-avatar" alt="avatar" />
-          </div>
-          <div>
-            <p>Hello, bibek</p>
-            <p>5:35pm</p>
-          </div>
-        </div>
-        {/* sender container */}
-        <div className="sender-container d-flex justify-content-around">
-          <div className="sender-avatar">
-            <img className="sender-avatar" alt="avatar" />
-          </div>
-          <div>
-            <p>Hello, babu</p>
-            <p>5:36pm</p>
-          </div>
-        </div>
-        {/* reviver container */}
-        <div className="reciever-container d-flex justify-content-around">
-          <div className="reciever-avatar">
-            <img className="reciever-avatar" alt="avatar" />
-          </div>
-          <div>
-            <p>Hello, bibek</p>
-            <p>5:35pm</p>
-          </div>
-        </div>
-        {/* sender container */}
-        <div className="sender-container d-flex justify-content-around">
-          <div className="sender-avatar">
-            <img className="sender-avatar" alt="avatar" />
-          </div>
-
-          <div>
-            <p>Hello, babu</p>
-            <p>5:36pm</p>
-          </div>
-        </div>
-        {/* reviver container */}
-        <div className="reciever-container d-flex justify-content-around">
-          <div className="reciever-avatar">
-            <img className="reciever-avatar" alt="avatar" />
-          </div>
-          <div>
-            <p>Hello, bibek</p>
-            <p>5:35pm</p>
-          </div>
-        </div>
-        {/* sender container */}
-        <div className="sender-container d-flex justify-content-around">
-          <div className="sender-avatar">
-            <img className="sender-avatar" alt="avatar" />
-          </div>
-          <div>
-            <p>Hello, babu</p>
-            <p>5:36pm</p>
-          </div>
-        </div>
+      <div className="message-list">
+        {messages.map((message) => {
+          <div key={message._id}>{message.message}</div>;
+          if (message.sender === user?.id) {
+            return (
+              <div key={message._id} className="message-right">
+                {message.message}
+              </div>
+            );
+          } else {
+            return (
+              <div key={message._id} className="message-left">
+                {message.message}
+              </div>
+            );
+          }
+        })}
       </div>
     </>
   );
 };
 
 export default MessageList;
+
+// THIS IS THE TERNARY VERSION FOR IF AND ELSE STATEMENT
+
+// className={
+//   message.sender === user.id
+//     ? "message-right"
+//     : "message-left"
+// }

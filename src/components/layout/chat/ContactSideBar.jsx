@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { getMyConversationApi } from "../../../helper/conversationApi";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyConversationAction } from "../../../feature/conversation/conversationAction";
+import { getMessageAction } from "../../../feature/message/messageAction";
 
 const ContactSideBar = () => {
   const { conversations } = useSelector((state) => state.conversationsInfo);
@@ -16,6 +17,10 @@ const ContactSideBar = () => {
   // console.log(conversations);
   // console.log(loggedUser);
 
+  const handleConversationClick =  (conversationId) => {
+    dispatch(getMessageAction(conversationId))
+    // console.log(getMessageAction(conversationId));
+  };
   return (
     <>
       <div className="contactContainer d-flex">
@@ -41,15 +46,23 @@ const ContactSideBar = () => {
               );
 
               return (
-
-                <div key={conversation._id}>
+                <div
+                  key={conversation._id}
+                  className="conversation-item"
+                  onClick={() => handleConversationClick(conversation._id)}
+                >
                   <div className="fw-bold">
                     {otherMember?.fName} {otherMember?.lName}
                   </div>
-                    <div>{conversation.lastMessage.message}</div>
-                    <div className="text-right">
+
+                  <div className="conversation-meta">
+                    <div className="last-message">
+                      {conversation.lastMessage?.message}
+                    </div>
+
+                    <div className="message-time">
                       {new Date(
-                        conversation.lastMessage.createdAt,
+                        conversation.lastMessage?.createdAt,
                       ).toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
@@ -57,6 +70,7 @@ const ContactSideBar = () => {
                       })}
                     </div>
                   </div>
+                </div>
               );
             })}
           </div>
