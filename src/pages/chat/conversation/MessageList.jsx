@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 const MessageList = () => {
   const { messages } = useSelector((state) => state.messageInfo);
-  const {user} = useSelector((state) => state.userInfo);
-  console.log(user);
+  const { user } = useSelector((state) => state.userInfo);
+  // console.log(user);
 
   return (
     <>

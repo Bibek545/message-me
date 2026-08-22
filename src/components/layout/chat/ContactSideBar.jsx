@@ -4,6 +4,7 @@ import { getMyConversationApi } from "../../../helper/conversationApi";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyConversationAction } from "../../../feature/conversation/conversationAction";
 import { getMessageAction } from "../../../feature/message/messageAction";
+import { setSelectedConversationId } from "../../../feature/conversation/conversationSlice";
 
 const ContactSideBar = () => {
   const { conversations } = useSelector((state) => state.conversationsInfo);
@@ -17,9 +18,11 @@ const ContactSideBar = () => {
   // console.log(conversations);
   // console.log(loggedUser);
 
-  const handleConversationClick =  (conversationId) => {
-    dispatch(getMessageAction(conversationId))
+  const handleConversationClick = (conversationId) => {
+    dispatch(setSelectedConversationId(conversationId));
+    dispatch(getMessageAction(conversationId));
     // console.log(getMessageAction(conversationId));
+    console.log(dispatch(setSelectedConversationId(conversationId)));
   };
   return (
     <>
