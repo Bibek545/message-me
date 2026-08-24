@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import MenuSideBar from "../../pages/chat/conversation/MenuSideBar";
+import { useDispatch } from "react-redux";
+import { getUserAction } from "../../feature/user/userAction";
 
 const UserLayout = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserAction());
+  }, []);
   return (
     <>
       <div className="userLayout">

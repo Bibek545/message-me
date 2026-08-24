@@ -10,9 +10,7 @@ const MessageInput = () => {
   );
 
   const [message, setMessage] = useState("");
-  const [state, setState] = useState({
-    message: "",
-  });
+
   const dispatch = useDispatch();
 
   const handleOnChange = (e) => {
@@ -40,7 +38,12 @@ const MessageInput = () => {
     }
     setMessage("");
   };
-
+  {
+    /*this is to trigger enter button manually to submit and
+   another way is to wrap it into form which is more easy and convient
+   */
+  
+  }
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleOnSubmit(e);

@@ -69,6 +69,7 @@ body {
 .conversation-item {
     cursor: pointer;
 }
+
 /* for the chat page */
 
 /* for the user layout */
@@ -124,16 +125,16 @@ body {
 .conversationContainer {
     display: flex;
     flex-direction: column;
-    border: 1px black;
+    border: 1px solid black;
     /* background-color: aliceblue; */
     background-color: rgba(247, 253, 247, 0.935);
-
 }
 
 .chatHeaderContainer {
     height: 100px;
     margin: 0;
     padding: 0;
+    border: 1px solid black;
 }
 
 /* Conversations */
@@ -144,20 +145,29 @@ body {
     margin: 5px;
 }
 
-.reciever-container {
-    height: auto;
+.message-left {
+    /* height: auto;
     width: 200px;
     background-color: rgb(242, 248, 242);
-    border: 1px solid black;
+    border: 1px solid black;*/
     align-self: flex-start;
+
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 24px rgba(217, 215, 215, 0.8);
 
 }
 
-.sender-container {
-    height: auto;
-    width: 200px;
-    background-color: rgb(242, 248, 242);
-    border: 1px solid black;
+.message-right {
+    background: rgb(31, 69, 206);
+    color: white;
+    padding: 1rem;
+    margin: 3px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 24px rgba(217, 215, 215, 0.8);
     text-align: end;
     align-self: flex-end;
 }
@@ -193,8 +203,10 @@ body {
 
 /* THIS IS FOR THE MESSAGE LIST */
 .message-list {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    /* margin: 1rem; */
+    padding: 1rem;
 }
 
 .message-right {
@@ -204,6 +216,7 @@ body {
 .message-left {
     align-self: flex-start;
 }
+
 /* THIS IS FOR THE MESSAGE LIST */
 
 /* conversatstuoin */

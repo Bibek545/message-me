@@ -6,7 +6,10 @@ const MessageList = () => {
   const { messages } = useSelector((state) => state.messageInfo);
   const { user } = useSelector((state) => state.userInfo);
   // console.log(user);
-
+// console.log("USER:", user);
+// console.log("USER ID:", user?.id);
+// console.log("USER _ID:", user?._id);
+// console.log("SENDER:", messages[0]?.sender);
   return (
     <>
       <div className="message-list">

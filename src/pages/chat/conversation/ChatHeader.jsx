@@ -11,6 +11,10 @@ const ChatHeader = () => {
           </p>
           <p>Bibek Hamal</p>
         </div>
+        <div>
+          <p>Video call</p>
+          <p>Phone</p>
+        </div>
         <div className="d-flex">
           <p>search</p>
           <p>setting</p>
