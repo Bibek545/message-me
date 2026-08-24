@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMyConversationAction } from "../../../feature/conversation/conversationAction";
 import { getMessageAction } from "../../../feature/message/messageAction";
 import { setSelectedConversationId } from "../../../feature/conversation/conversationSlice";
-
+import { setSelectedConversation } from "../../../feature/conversation/conversationSlice.js";
 const ContactSideBar = () => {
   const { conversations } = useSelector((state) => state.conversationsInfo);
   const loggedUser = useSelector((state) => state.userInfo);
@@ -18,11 +18,18 @@ const ContactSideBar = () => {
   // console.log(conversations);
   // console.log(loggedUser);
 
-  const handleConversationClick = (conversationId) => {
-    dispatch(setSelectedConversationId(conversationId));
-    dispatch(getMessageAction(conversationId));
+  // const handleConversationClick = (conversationId) => {
+  //   dispatch(setSelectedConversationId(conversationId));
+  //   dispatch(getMessageAction(conversationId));
     // console.log(getMessageAction(conversationId));
-    console.log(dispatch(setSelectedConversationId(conversationId)));
+  //   console.log(dispatch(setSelectedConversationId(conversationId)));
+  // };
+    const handleConversationClick = (conversation) => {
+      dispatch(setSelectedConversation(conversation))
+    // dispatch(setSelectedConversation(conversation));
+    dispatch(getMessageAction(conversation._id));
+    // console.log(getMessageAction(conversationId));
+    // console.log(dispatch(setSelectedConversationId(conversation)));
   };
   return (
     <>
@@ -52,7 +59,7 @@ const ContactSideBar = () => {
                 <div
                   key={conversation._id}
                   className="conversation-item"
-                  onClick={() => handleConversationClick(conversation._id)}
+                  onClick={() => handleConversationClick(conversation)}
                 >
                   <div className="fw-bold">
                     {otherMember?.fName} {otherMember?.lName}

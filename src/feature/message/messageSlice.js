@@ -11,9 +11,12 @@ const messageSlice = createSlice({
         setMessages: (state, action) => {
             state.messages = action.payload
         },
+        setNewMessages: (state, action) => {
+            state.messages.push(action.payload)
+        }
     },
 });
 
 const { reducer, actions} = messageSlice
-export const { setMessages} = actions;
+export const { setMessages, setNewMessages} = actions;
 export default reducer;
