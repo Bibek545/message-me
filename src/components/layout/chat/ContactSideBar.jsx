@@ -23,6 +23,7 @@ const ContactSideBar = () => {
 
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
+
   useEffect(() => {
     dispatch(getMyConversationAction());
   }, []);
@@ -31,7 +32,7 @@ const ContactSideBar = () => {
     dispatch(setSelectedConversation(conversation));
     dispatch(getMessageAction(conversation._id));
   };
-
+  
   const handleOnSearch = (e) => {
     e.preventDefault();
 
@@ -63,7 +64,8 @@ const ContactSideBar = () => {
     setShowSearchResults(false);
     setSearch("");
   };
-
+  
+  // for the delete button
   const handleOnDelete = async (conversationId) => {
     const response = confirm("Are you sure you want to delete this chat?");
     if (response) {
@@ -74,6 +76,8 @@ const ContactSideBar = () => {
     }
     console.log(conversationId);
   };
+  
+
   return (
     <>
       <div className="contactContainer d-flex">

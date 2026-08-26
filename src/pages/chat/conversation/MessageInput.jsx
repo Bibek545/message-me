@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { createMessageApi } from "../../../helper/messageApi";
 import { setNewMessages } from "../../../feature/message/messageSlice";
 import { getMyConversationAction } from "../../../feature/conversation/conversationAction";
+import socket from "../../../helper/socket";
 
 const MessageInput = () => {
   const { selectedConversation } = useSelector(
     (state) => state.conversationsInfo,
   );
+
+  const { user } = useSelector((state) => state.userInfo);
 
   const [message, setMessage] = useState("");
 
@@ -21,25 +24,34 @@ const MessageInput = () => {
   };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    if (!selectedConversation) {
+      console.log("No conversation selected");
+      return;
+    }
+    const receiver = selectedConversation.members.find(
+      (member) => member._id !== user.id,
+    );
+
+    console.log("RECEIVER:", receiver);
     const payload = {
       conversationId: selectedConversation._id,
       message: message,
     };
 
     console.log(payload.conversationId);
-    if (!selectedConversation) {
-      console.log("No conversation selected");
-      return;
-    }
+
     const newMessage = await createMessageApi(payload);
     console.log("This is the new message", newMessage);
 
     if (newMessage.status === "success") {
       dispatch(setNewMessages(newMessage.newMessage));
       dispatch(getMyConversationAction());
+      socket.emit("SendMessage", {
+        receiverId: receiver._id,
+          message: newMessage.newMessage,
+      });
       setMessage("");
     }
-    setMessage("");
   };
   {
     /*this is to trigger enter button manually to submit and
