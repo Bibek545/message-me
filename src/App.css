@@ -108,16 +108,61 @@ body {
     flex-direction: column;
 }
 
-.contactItem {
-    border: 1px dotted black;
-}
-
 .contactContainer-header {}
 
 .contactItem p {
     margin: 0;
     padding: 0;
 }
+
+.conversation-list {
+    /* position: relative; */
+    border: 1px dotted black;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.conversation-top {
+  display: flex;
+  justify-content: space-between;
+}
+.conversation-item {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+/* this is for the pop up search  */
+
+.contactContainer-header {
+    position: relative;
+
+}
+
+.search-result {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 6px;
+    z-index: 10;
+}
+
+.search-result-user {
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+.search-result-user:hover {
+    background: #f2f2f2;
+}
+
+/* this is for the pop up search  */
 
 /* ContactSideBar */
 

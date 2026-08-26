@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { createMessageApi } from "../../../helper/messageApi";
 import { setNewMessages } from "../../../feature/message/messageSlice";
+import { getMyConversationAction } from "../../../feature/conversation/conversationAction";
 
 const MessageInput = () => {
   const { selectedConversation } = useSelector(
@@ -35,6 +36,8 @@ const MessageInput = () => {
 
     if (newMessage.status === "success") {
       dispatch(setNewMessages(newMessage.newMessage));
+      dispatch(getMyConversationAction());
+      setMessage("");
     }
     setMessage("");
   };
@@ -42,7 +45,6 @@ const MessageInput = () => {
     /*this is to trigger enter button manually to submit and
    another way is to wrap it into form which is more easy and convient
    */
-  
   }
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {

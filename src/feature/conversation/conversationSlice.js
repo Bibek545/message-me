@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   conversations: [],
+  searchedUsers: [],
   selectedConversationId: null,
   selectedConversation: null,
 };
@@ -20,9 +21,12 @@ const conversationSlice = createSlice({
     setSelectedConversationId: (state, action) => {
       state.selectedConversationId = action.payload;
     },
+    setSearchedUser: (state, action) => {
+      state.searchedUsers = action. payload
+    }
   },
 });
 
 const { reducer, actions } = conversationSlice;
-export const { setConversations, setSelectedConversationId, setSelectedConversation } = actions;
+export const { setConversations, setSelectedConversationId, setSelectedConversation, setSearchedUser } = actions;
 export default reducer;
