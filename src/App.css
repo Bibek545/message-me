@@ -124,16 +124,18 @@ body {
 }
 
 .conversation-top {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
+
 .conversation-item {
-  width: 100%;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  cursor: pointer;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    box-sizing: border-box;
 }
+
 /* this is for the pop up search  */
 
 .contactContainer-header {
@@ -235,10 +237,22 @@ body {
 
 .message-box {
     /* height: auto; */
-    width: 100%;
+    width: 67%;
     background-color: darkgray;
-    margin: 5px;
 
+    position: fixed;
+    bottom: 0;
+    /* left: 0; */
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.fixed-input-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    box-sizing: border-box;
 }
 
 .messageInput-box {

@@ -6,11 +6,14 @@ import MessageInput from "../../../pages/chat/conversation/MessageInput";
 const Conversation = () => {
   return (
     <>
-    <div className="conversationContainer">
-      <ChatHeader />
-      <MessageList />
-      <MessageInput />
-    </div>
+      <div className="conversationContainer">
+        <ChatHeader />
+        <MessageList />
+        {/* <div className="fixed-input-bar"> */}
+          <MessageInput />
+
+        {/* </div> */}
+      </div>
     </>
   );
 };

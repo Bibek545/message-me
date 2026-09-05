@@ -8,22 +8,34 @@ import { setNewMessages } from "../../feature/message/messageSlice.js";
 
 const UserLayout = () => {
   const { user } = useSelector((state) => state.userInfo);
+  const { selectedConversation } = useSelector(
+    (state) => state.conversationsInfo,
+  );
+
   console.log(user);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getUserAction());
   }, []);
+
   useEffect(() => {
     if (user?.id) {
       socket.emit("addUser", user.id);
       console.log("EMITTING addUser:", user.id);
     }
   }, [user]);
+
   useEffect(() => {
     const handleReceiveMessage = (message) => {
       console.log("LIVE MESSAGE:", message);
+      if (message.conversationId === selectedConversation?._id) {
+        console.log("Same conversation");
+        dispatch(setNewMessages(message));
 
-      dispatch(setNewMessages(message));
+      } else {
+        console.log("Different conversation")
+      }
     };
 
     socket.on("ReceiveMessage", handleReceiveMessage);
@@ -31,7 +43,7 @@ const UserLayout = () => {
     return () => {
       socket.off("ReceiveMessage", handleReceiveMessage);
     };
-  }, [dispatch]);
+  }, [dispatch, selectedConversation]);
   return (
     <>
       <div className="userLayout">
