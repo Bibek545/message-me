@@ -22,11 +22,29 @@ const conversationSlice = createSlice({
       state.selectedConversationId = action.payload;
     },
     setSearchedUser: (state, action) => {
-      state.searchedUsers = action. payload
-    }
+      state.searchedUsers = action.payload;
+    },
+    updateConversationLastMessage: (state, action) => {
+      const conversation = state.conversations.find(
+        (conversation) => conversation._id === action.payload.conversationId,
+      );
+
+      if (conversation) {
+        conversation.lastMessage = action.payload;
+        console.log("Conversation found");
+      } else {
+        console.log("Conversation not found");
+      }
+    },
   },
 });
 
 const { reducer, actions } = conversationSlice;
-export const { setConversations, setSelectedConversationId, setSelectedConversation, setSearchedUser } = actions;
+export const {
+  setConversations,
+  setSelectedConversationId,
+  setSelectedConversation,
+  setSearchedUser,
+  updateConversationLastMessage,
+} = actions;
 export default reducer;

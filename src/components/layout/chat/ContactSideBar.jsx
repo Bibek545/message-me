@@ -14,12 +14,15 @@ import {
 import { getMessageAction } from "../../../feature/message/messageAction";
 import { setSelectedConversationId } from "../../../feature/conversation/conversationSlice";
 import { setSelectedConversation } from "../../../feature/conversation/conversationSlice.js";
+import { RxHamburgerMenu } from "react-icons/rx";
+import MenuSideBar from "../../../pages/chat/conversation/MenuSideBar.jsx";
 const ContactSideBar = () => {
   const { conversations, searchedUsers } = useSelector(
     (state) => state.conversationsInfo,
   );
   const loggedUser = useSelector((state) => state.userInfo);
   const [showSearchResults, setShowSearchResults] = useState(false);
+  const [showMenu, setShowMenu] = useState(false)
 
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
@@ -32,7 +35,7 @@ const ContactSideBar = () => {
     dispatch(setSelectedConversation(conversation));
     dispatch(getMessageAction(conversation._id));
   };
-  
+
   const handleOnSearch = (e) => {
     e.preventDefault();
 
@@ -64,7 +67,7 @@ const ContactSideBar = () => {
     setShowSearchResults(false);
     setSearch("");
   };
-  
+
   // for the delete button
   const handleOnDelete = async (conversationId) => {
     const response = confirm("Are you sure you want to delete this chat?");
@@ -76,96 +79,115 @@ const ContactSideBar = () => {
     }
     console.log(conversationId);
   };
-  
+
+  const handleOnMenuClick = () => {
+    setShowMenu(((prev) => !prev))
+    // setShowMenu()
+  }
 
   return (
     <>
-      <div className="contactContainer d-flex">
-        <div className="contactContainer-header m-3">
-          <h4>Chats</h4>
-          <Form className="d-flex" onSubmit={handleOnSearch}>
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              aria-label="Search"
-            />
-            <Button variant="outline-primary" type="submit">
-              Search
-            </Button>
-          </Form>
+      <div className="mobile-layout">
+        <div className={`mobile-menu ${showMenu ? "open" : ""}`}>
+          <MenuSideBar />
+        </div>
+        <div className="mobile-content">
+          <div className="contactContainer d-flex">
+            <div className="contactContainer-header m-3">
+              <Button className='hamburger-menu' onClick={handleOnMenuClick}><RxHamburgerMenu />
+              </Button>
+              {
+                showMenu && <div className="mobile-menu-drawer">
+                  <MenuSideBar /></div>
+              }
+              <h4>Chats</h4>
+              <Form className="d-flex" onSubmit={handleOnSearch}>
+                <Form.Control
+                  type="search"
+                  placeholder="Search"
+                  className="me-2"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  aria-label="Search"
+                />
+                <Button variant="outline-primary" type="submit">
+                  Search
+                </Button>
+              </Form>
 
-          {showSearchResults && (
-            <div className="search-result">
-              {searchedUsers.length > 0 ? (
-                searchedUsers.map((searchedUser) => (
-                  <div
-                    key={searchedUser._id}
-                    className="search-result-user"
-                    onClick={() => handleSearchedUserClick(searchedUser)}
-                  >
-                    {searchedUser.fName} {searchedUser.lName}
-                  </div>
-                ))
-              ) : (
-                <div>No user found</div>
+              {showSearchResults && (
+                <div className="search-result">
+                  {searchedUsers.length > 0 ? (
+                    searchedUsers.map((searchedUser) => (
+                      <div
+                        key={searchedUser._id}
+                        className="search-result-user"
+                        onClick={() => handleSearchedUserClick(searchedUser)}
+                      >
+                        {searchedUser.fName} {searchedUser.lName}
+                      </div>
+                    ))
+                  ) : (
+                    <div>No user found</div>
+                  )}
+                </div>
               )}
             </div>
-          )}
-        </div>
-        <div className="conversation-list">
-          <div className="">
-            {conversations.map((conversation) => {
-              console.log(conversation.members);
+            <div className="conversation-list">
+              <div className="">
+                {conversations.map((conversation) => {
+                  console.log(conversation.members);
 
-              const otherMember = conversation.members?.find(
-                (member) => member._id !== loggedUser.user?.id,
-              );
+                  const otherMember = conversation.members?.find(
+                    (member) => member._id !== loggedUser.user?.id,
+                  );
 
-              return (
-                <div
-                  key={conversation._id}
-                  className="conversation-item"
-                  onClick={() => handleConversationClick(conversation)}
-                >
-                  <div className="conversation-top">
-                    <div className="fw-bold">
-                      {otherMember?.fName} {otherMember?.lName}
-                    </div>
-                  </div>
-                  <div className="conversation-meta">
-                    <div className="last-message">
-                      {conversation.lastMessage?.message || "No messages yet"}
-                    </div>
+                  return (
+                    <div
+                      key={conversation._id}
+                      className="conversation-item"
+                      onClick={() => handleConversationClick(conversation)}
+                    >
+                      <div className="conversation-top">
+                        <div className="fw-bold">
+                          {otherMember?.fName} {otherMember?.lName}
+                        </div>
+                      </div>
+                      <div className="conversation-meta">
+                        <div className="last-message">
+                          {conversation.lastMessage?.message || "No messages yet"}
+                        </div>
 
-                    <div className="message-time">
-                      {conversation.lastMessage?.createdAt
-                        ? new Date(
-                            conversation.lastMessage?.createdAt,
-                          ).toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            hour12: true,
-                          })
-                        : ""}
+                        <div className="message-time">
+                          {conversation.lastMessage?.createdAt
+                            ? new Date(
+                              conversation.lastMessage?.createdAt,
+                            ).toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              hour12: true,
+                            })
+                            : ""}
+                        </div>
+                      </div>{" "}
+                      <Button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleOnDelete(conversation._id);
+                        }}
+                      >
+                        Delete
+                      </Button>
                     </div>
-                  </div>{" "}
-                  <Button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleOnDelete(conversation._id);
-                    }}
-                  >
-                    Delete
-                  </Button>
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
+
     </>
   );
 };

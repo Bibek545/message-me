@@ -104,10 +104,33 @@ body {
 .contactContainer {
     background-color: rgba(247, 253, 247, 0.935);
     border: 1px black;
-
     flex-direction: column;
+    width: 100%;
 }
 
+/*  */
+.mobile-layout {
+  display: flex;
+  width: 100%;
+}
+
+.mobile-menu {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  background: white;
+}
+
+.mobile-menu.open {
+  width: 230px;
+}
+
+.mobile-content {
+  flex: 1;
+  min-width: 0;
+  transition: all 0.3s ease;
+}
+/*  */
 .contactContainer-header {}
 
 .contactItem p {
@@ -134,6 +157,10 @@ body {
     border-bottom: 1px solid #ddd;
     cursor: pointer;
     box-sizing: border-box;
+}
+
+.contactContainer-header .hamburger-menu {
+    display: none;
 }
 
 /* this is for the pop up search  */
@@ -265,7 +292,9 @@ body {
     display: flex;
     flex-direction: column;
     /* margin: 1rem; */
+    margin: 1%;
     padding: 1rem;
+    overflow-y: auto;
 }
 
 .message-right {
@@ -287,3 +316,39 @@ body {
 }
 
 /* profilePage */
+
+
+
+@media screen and (max-width: 767px) {
+    .userLayout {
+        /* background-color: red; */
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        /* width: 100%; */
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .conversationContainer {
+        display: none;
+    }
+
+    .contactContainer {
+        height: auto;
+        width: 100%;
+        padding: 5%;
+        margin-right: 5%;
+    }
+
+    .contactContainer-header .hamburger-menu {
+        display: block;
+        background-color: white;
+        color: black;
+        border-color: #ddd;
+        margin-bottom: 5%;
+        position: fixed;
+    }
+}
