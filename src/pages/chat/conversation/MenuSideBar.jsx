@@ -18,7 +18,7 @@ const MenuSideBar = () => {
 
   return (
     <>
-      <div className="menuside-container d-flex pt-5">
+      <div className="menuside-container d-flex py-2">
         <div>
           <Link to="/user/dashboard" className="nav-link p-3 fw-bold">
             Chats

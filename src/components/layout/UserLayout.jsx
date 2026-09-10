@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserAction } from "../../feature/user/userAction";
 import { socket } from "../../helper/socket.js";
 import { setNewMessages } from "../../feature/message/messageSlice.js";
+import Footer from "./Footer.jsx";
 
 const UserLayout = () => {
   const { user } = useSelector((state) => state.userInfo);
@@ -46,13 +47,19 @@ const UserLayout = () => {
   }, [dispatch, selectedConversation]);
   return (
     <>
-      <div className="userLayout">
-        <div className="sidebar fw-bold text-black">
-          <MenuSideBar />
+      <div className="parent-userLayout">
+        <div className="userLayout">
+          <div className="sidebar fw-bold text-black">
+            <MenuSideBar />
+          </div>
+          <main className="userContent">
+            <Outlet />
+          </main>
         </div>
-        <main className="userContent">
-          <Outlet />
-        </main>
+        <div className="footer">
+          <Footer />
+        </div>
+
       </div>
     </>
   );

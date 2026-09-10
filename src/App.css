@@ -39,7 +39,7 @@ body {
     display: grid;
     grid-template-columns: 500px 1fr;
 
-    height: 100vh;
+    min-height: 80vh;
     width: 100%;
     /* background-color: aliceblue */
 }
@@ -73,15 +73,22 @@ body {
 /* for the chat page */
 
 /* for the user layout */
-.userLayout {
+
+.parent-userLayout {
     display: flex;
+    flex-direction: column;
     width: 100%;
     min-height: 100vh;
 }
 
+.userLayout {
+    display: flex;
+    /* flex-direction: column; */
+
+}
+
 .sidebar {
     width: 120px;
-    ;
     flex-shrink: 0;
 }
 
@@ -109,27 +116,11 @@ body {
 }
 
 /*  */
-.mobile-layout {
-  display: flex;
-  width: 100%;
-}
 
 .mobile-menu {
-  width: 0;
-  overflow: hidden;
-  transition: width 0.3s ease;
-  background: white;
+    width: 100%;
 }
 
-.mobile-menu.open {
-  width: 230px;
-}
-
-.mobile-content {
-  flex: 1;
-  min-width: 0;
-  transition: all 0.3s ease;
-}
 /*  */
 .contactContainer-header {}
 
@@ -206,8 +197,7 @@ body {
 
 .chatHeaderContainer {
     height: 100px;
-    margin: 0;
-    padding: 0;
+
     border: 1px solid black;
 }
 
@@ -220,10 +210,6 @@ body {
 }
 
 .message-left {
-    /* height: auto;
-    width: 200px;
-    background-color: rgb(242, 248, 242);
-    border: 1px solid black;*/
     align-self: flex-start;
 
     background: white;
@@ -266,7 +252,6 @@ body {
     /* height: auto; */
     width: 67%;
     background-color: darkgray;
-
     position: fixed;
     bottom: 0;
     /* left: 0; */
@@ -332,9 +317,9 @@ body {
         display: none;
     }
 
-    .conversationContainer {
+    /* .conversationContainer {
         display: none;
-    }
+    } */
 
     .contactContainer {
         height: auto;
@@ -349,6 +334,61 @@ body {
         color: black;
         border-color: #ddd;
         margin-bottom: 5%;
-        position: fixed;
+        /* position: fixed; */
+    }
+
+    .menuside-container {
+        /* flex-direction: column; */
+        /* background-color: red; */
+
+    }
+
+    .chat-page {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* background-color: red; */
+        /* min-height: 78vh; */
+        min-height: 85vh;
+        min-width: 100%;
+        /* background-color: aliceblue */
+    }
+   
+    .message-container {
+        /* min-height: 100vh; */
+        flex-direction: column;
+        overflow: hidden;
+    }
+    /* .footer {
+        min-width: 100%;
+    } */
+
+    .message-box{
+        position: static;
+        width: 100%;
+    }
+
+    .mobile-menu {
+        animation: menuOpen 0.3s ease;
+    }
+    .hide-contact {
+        display: none;
+    }
+    .show-conversation {
+        display: block;
+    }
+    .hide-conversation {
+        display: none;
+    }
+
+    @keyframes menuOpen {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }
