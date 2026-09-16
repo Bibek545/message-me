@@ -249,15 +249,18 @@ body {
 }
 
 .message-box {
-    /* height: auto; */
-    width: 67%;
-    background-color: darkgray;
-    position: fixed;
-    bottom: 0;
-    /* left: 0; */
+    height: auto;
+    width: 100%;
+
     z-index: 1;
     box-sizing: border-box;
+    /* position: fixed;
+    bottom: 0;
+    /* left: 0; */
 }
+
+/* / */
+
 
 .fixed-input-bar {
     position: fixed;
@@ -303,6 +306,13 @@ body {
 /* profilePage */
 
 
+
+@media screen and (min-width: 767px) {
+    .go-back {
+        display: none;
+    }
+
+}
 
 @media screen and (max-width: 767px) {
     .userLayout {
@@ -352,30 +362,38 @@ body {
         min-width: 100%;
         /* background-color: aliceblue */
     }
-   
+
     .message-container {
         /* min-height: 100vh; */
         flex-direction: column;
         overflow: hidden;
     }
+
     /* .footer {
         min-width: 100%;
     } */
 
-    .message-box{
+
+    .message-box {
         position: static;
+        background-color: white;
+        z-index: 1;
+
         width: 100%;
     }
 
     .mobile-menu {
         animation: menuOpen 0.3s ease;
     }
+
     .hide-contact {
         display: none;
     }
+
     .show-conversation {
         display: block;
     }
+
     .hide-conversation {
         display: none;
     }
