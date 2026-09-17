@@ -75,6 +75,8 @@ body {
 /* for the user layout */
 
 .parent-userLayout {
+    padding: 2rem;
+    /* margin: 1rem; */
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -299,11 +301,52 @@ body {
 
 /* proifilePage */
 .profilePageContainer {
-    border: 1px black;
-    background-color: red;
+    padding: 1rem;
+
 }
 
-/* profilePage */
+/* this is profilePage */
+.profile-Container {
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 24px rgba(217, 215, 215, 0.8);
+    width: 100%;
+    max-width: 700px;
+    padding: 2rem;
+}
+
+.profile-content-wrapper {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.button-save {
+    width: 200px;
+    margin-right: 5px;
+
+}
+
+.button-cancel {
+    width: 200px;
+    margin-left: 5px;
+}
+
+.button {}
+
+.security-container {
+    display: flex;
+    justify-content:space-around;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 24px rgba(217, 215, 215, 0.8);
+    /* gap: 20px; */
+    margin-top: 15px;
+    padding: 2rem;
+}
+
+/* this is profilePage */
+
 
 
 

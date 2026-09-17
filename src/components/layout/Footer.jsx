@@ -10,7 +10,7 @@ const Footer = () => {
         <Row className="align-items-start text-start px-4">
           {/* left */}
           <Col md={4} xs={4} className="">
-            <Stack>
+            {/* <Stack>
               <Image
                 // src={logo}
                 alt="company logo"
@@ -18,10 +18,10 @@ const Footer = () => {
                 width={100}
                 height={100}
               />
-            </Stack>
+            </Stack> */}
             <div>
               <h4 className="mt-2">Message-Me</h4>
-              <p className="mb-0">Company Tagline Here</p>
+              <p className="mb-0">Stay Connected Always</p>
             </div>
           </Col>
           {/* middle */}
